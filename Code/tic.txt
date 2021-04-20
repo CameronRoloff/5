@@ -1,0 +1,170 @@
+import java.util.*;
+
+public class TicTacToe {
+    private static SpaceType[][] board = new SpaceType[3][3];
+
+    public static void main(String[] args) {
+        new TicTacToe();
+    }
+
+    public TicTacToe() {
+        Scanner inputScanner = new Scanner(System.in);
+
+        for(int index = 0; index < board.length; index++) {
+            for(int index_ = 0; index_ < board.length; index_++) {
+                board[index][index_] = SpaceType.EMPTY;
+            }
+        }
+
+        SpaceType winner;
+        boolean currentTurn = false;
+
+        while((winner = getWinner()) == null) {
+            printBoard();
+
+            System.out.println();
+
+            if(currentTurn)
+                System.out.println("O, it's your turn! Enter the index of the spot you'd like to fill: ");
+            else
+                System.out.println("X, it's your turn! Enter the index of the spot you'd like to fill: ");
+
+            try {
+                if(!setIndexToSpace(inputScanner.nextInt(), currentTurn))
+                    System.out.println("Not a valid index! You lose your turn :(");
+            }catch(InputMismatchException exception) {
+                inputScanner.nextLine();
+                System.out.println("Not a valid index! You lose your turn :(");
+            }
+
+            currentTurn = !currentTurn;
+        }
+
+        printBoard();
+
+        System.out.println();
+
+        if(winner != SpaceType.EMPTY)
+            System.out.println(winner.getName() + " won the game!");
+        else
+            System.out.println("The game was a tie!");
+    }
+
+    private void printBoard() {
+        System.out.println();
+
+        for (int index = 0; index < board.length; index++) {
+            StringBuilder boardLine = new StringBuilder();
+
+            for (int index_ = 0; index_ < board.length; index_++) {
+                if(index_ == 0)
+                    boardLine.append(" ");
+
+                if (board[index][index_] == SpaceType.EMPTY)
+                    boardLine.append((index * 3) + index_);
+                else
+                    boardLine.append(board[index][index_].getName());
+
+                if (index_ != board.length - 1)
+                    boardLine.append(" | ");
+            }
+
+            System.out.println(boardLine.toString());
+
+            if(index != board.length - 1)
+                System.out.println("-----------");
+        }
+    }
+
+    private SpaceType getWinner() {
+        int first;
+        int result;
+
+        // Check horizontal wins
+        for (SpaceType[] row : board) {
+            first = row[0].ordinal();
+            result = first;
+
+            for (int index_ = 0; index_ < board.length; index_++) {
+                result &= row[index_].ordinal();
+            }
+
+            if (result != 0)
+                return SpaceType.values()[result];
+        }
+
+        // Check vertical wins
+        for (int index = 0; index < board.length; index++) {
+            first = board[0][index].ordinal();
+            result = first;
+
+            for (SpaceType[] row : board) {
+                result &= row[index].ordinal();
+            }
+
+            if (result != 0)
+                return SpaceType.values()[result];
+        }
+
+        first = board[0][0].ordinal();
+        result = first;
+
+        // Check cross wins
+        for (int index = 0; index < board.length; index++) {
+            result &= board[index][index].ordinal();
+        }
+
+        if (result != 0)
+            return SpaceType.values()[result];
+
+        first = board[0][2].ordinal();
+        result = first;
+
+        // Check cross wins in opposite direction
+        for (int index = 0; index < board.length; index++) {
+            result &= board[2 - index][index].ordinal();
+        }
+
+        if (result != 0)
+            return SpaceType.values()[result];
+
+        // Check if board is filled, if not the game is not finished so there is no winner
+        for (SpaceType[] row : board) {
+            for (SpaceType entry : row) {
+                if (entry == SpaceType.EMPTY)
+                    return null;
+            }
+        }
+
+        // There is no winner but the board is filled -- tie
+        return SpaceType.EMPTY;
+    }
+
+    private boolean setIndexToSpace(int index, boolean o) {
+        if(index < 0 || index > 8)
+            return false;
+
+        int row = index / 3;
+
+        if(board[row][index - (row * 3)] == SpaceType.EMPTY) {
+            board[row][index - (row * 3)] = o ? SpaceType.O : SpaceType.X;
+            return true;
+        }
+
+        return false;
+    }
+}
+
+enum SpaceType {
+    EMPTY (""), X ("X"), O ("O");
+
+    private String name;
+
+    SpaceType(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

@@ -1,0 +1,337 @@
+6.1
+Picture
+
+6.2
+Structure of classes
+Details about to which package the current class belongs to.
+Detail explanation of the class and an example
+Classes super class and the interface it implements.
+Example could be like 
+	public final(optional) class ClassName
+	extends SuperClassName(if any)
+		implements [List of interfaces separated by comma]
+
+Commons are
+Class description
+Constructor Summary
+Method Summary
+
+Class description
+-Provides information about which class the present class is derived from, also what interface it implements to.
+Constructor Summary
+-Describes how to define an object of the current class and which type of constructor can be used.
+Method Summary
+-return types, method name, the parameters it accepts, static or final (if any)
+
+6.3
+
+Verison one:
+
+public boolean startsWith(String str, int index)
+
+This verison searches for the string, and the second parameter determines where the index is to begin searching at.
+
+Verison two:
+
+public boolean startsWith(String str)
+
+Searches for string at the begining of the string.
+
+One has a starting place for a certain index, where the other one starts from the start.
+
+6.4:
+
+
+There is one, it's called endsWith.
+
+public boolean endsWith(String suffix) , this accepts a string and has a return type of true or false.
+
+6.5:
+
+There is one of these too, its called length() which will return the number of characters in a string. It has no paramters and it will return a interger value.
+
+6.6:
+
+It was easy, I either googled or used the jdk to find them. 
+
+
+6.7:
+
+trim method removes all the white spaces and returns the new string trimmed.
+	Signature would be: public String trim()
+
+	ex would be: String trimText=text.trim();
+
+6.8:
+Picture
+
+6.9
+Picture
+
+6.10
+
+A boolean value
+
+6.11
+Picture
+
+6.12
+
+Package: java.util package.
+
+The random class will generate random numbers.
+
+Instances can be created by using any type of constructor call 
+
+	Random rand=new Random(Long seed)
+	Random rand=new Random()
+Ex
+	Random rand=new Random()
+	int num = rand.nextInt();
+
+6.13
+Picture
+
+6.14
+Picture
+
+6.15
+Between 0 to 100.
+
+6.16
+Picture
+
+6.17
+Picture
+
+6.18
+
+6.19
+Picture
+
+6.20
+Picture
+
+6.21
+
+It is possible to use the SecureRandom class, its because Random class is also in the package, so they do function the same. But for the name being SecureRandom is more Secured.
+SecureRandom is important because generators determine how hard it is to break into a system.
+
+6.22
+
+6.23
+
+It will work properly even if you add more responses to it. The reason behide this would be that the array list is used to generate a random number that will be dependent on the number of reponses added to the list.
+
+6.24
+A hashmap is just a modeled data sctureure that will use a mapping technique to map key values associated with it. Hashmaps will improve perforamces of basic operations like get and put.
+
+6.25
+
+public V get (Object key)
+public V put (K key, V value)
+
+Both methods can be used for as parameters.
+
+6.26
+
+int size()
+
+6.27
+Picture
+
+6.28
+Nothing it will just override the existing one.
+
+6.29
+Both values would be map
+
+6.30
+
+We would just use the method called containsKey. Which will return a boolean value of t/f.
+Ex
+HashMap<String, String> phoneBook=
+	new HashMap<String, String>();
+        phoneBook.put("Cameron Roloff", "(231) 675 3911");
+        phoneBook.put("Jamie Roloff", "(231) 675 1211");
+        phoneBook.put("Bob Roloff", "(231) 675 2301");
+
+boolean found = phonebook.containsKey(("Cameron Roloff");
+
+6.31
+returns a null
+
+6.32
+
+we would use an iterator
+
+Set key = phoneBook.keySet();
+
+Iterator it=key.iterator();
+
+While(it.hasNext())
+{
+System.out.println(it.next());
+
+}
+6.33
+
+6.34
+
+Similarities:
+
+Both the HashSet and ArrayList are used to store collections of items/objects.
+
+Differences:
+HashSet doesn't let there be duplicate objects in a set
+
+6.35
+
+Based on how the user inputs
+
+6.36
+tab/space
+String []splittedStr= str.split("[ \t]");
+:
+String []splittedStr= str.split(":");
+6.37
+HashSets will not return dups where ArrayList can.
+6.38
+no problem
+
+6.39
+It returns a fixed size list backed with a specified array.
+
+6.40
+Examples
+Java.util.Arrays.equals(int[]a,int[]a2)
+Java.util.Arrays.sort(int[]a)
+
+6.41
+Picture
+
+6.47
+Picture
+
+6.48
+It will take two parameters(K and V) which returns the value V. The method looks to see if anything is tied with this key or not.
+
+6.49
+Picture
+
+6.51
+Seems completeled and correct  with no errors found. It also shows constructor details and method details.
+
+6.52
+
+@param @returns and @see
+@param gives us information about the parameter
+@returns will give us information on what it returns
+@see allows you to see attach image
+
+This helps with method in details.
+
+
+6.53
+
+Package Documentation tags
+Overview Documentation tags
+Class and interface Documentation tags
+Package
+@see
+@since
+@version
+
+Overview
+@see
+@since
+@version
+
+Class &interface
+@see
+@since
+@deprecated
+
+6.54
+Picture
+
+6.55
+
+colorScribble method: will create an instance of the class pen, then randomly generate different colors.
+drawSquare method: will set the pen to blue and make a single square
+drawWheel method: will set the pen to red and create a wheel shape.
+
+6.56
+Picture
+
+6.57
+
+Picture
+
+6.58
+The color constants are used to set a default color to objects.  Square being blue, Red being a wheel, and random when doing a scribble.
+
+6.59
+Cyan,Orange, Green and Yellow.
+
+6.60
+
+when I invoke the rectangle the red circle disappears.
+
+6.61
+
+void erase()
+
+6.62-6.64 
+pictures
+
+6.66
+16 methods
+
+6.69
+I would say the HashSet, it's because it allows storing the same values of an object.
+
+6.75
+Math.PI defines the value of pie
+Math.E defines e which is 2.718
+Interger.MIN defines the min value of int
+Interger.MAX defines the max value of the int
+Double.MIN define the min value of the double
+Double.MAX define the max value of the double
+
+6.76
+It remains the same throughout the code with the name.
+
+6.77
+java.lang.Math.max() // 
+java.lang.Math.max(int a, int b) 
+
+6.78
+not it cant be written as a isntance. This is because they don't require any internal state. 
+7.79
+import java.land.*;
+public class Test {
+public static void main(String[] args){
+//this will reutn the current time in milliseconds
+for(int i=0;i<10000;1++)
+{
+}
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
+}}
+7.80
+Yes a static method could be called from a instance method, no an instance method can't be called directly from a static method.
+Yes static methods can be called from a another static method without any refernce to an object.
+8.81
+Read
+8.82
+
+8.84
+Yes a class can count a number of instances that have been made of that class.
+8.88
+The method is not assigned to anything, to fix this the string must be assigned.
+public void printUpper (String s)
+{
+	s=s.toUpperCase();
+	System.out.println(s);
+}
